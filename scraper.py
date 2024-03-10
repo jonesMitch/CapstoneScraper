@@ -10,6 +10,9 @@ duds = {
 }
 
 def scrape():
+    if (len(stakes) == 0):
+        stakes.append("Prosper")
+        stakes.append("Fargo")
     check_duds()
 
     data = requests.get(url).text
