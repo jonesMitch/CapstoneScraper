@@ -1,4 +1,4 @@
 Clyde
-Prosper
+pROSPER
 
-Ray
+ray
