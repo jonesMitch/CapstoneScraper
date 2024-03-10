@@ -8,6 +8,9 @@ def scrape():
     data = requests.get(url).text
     soup = bs(data, 'html.parser')
     for item in soup.find_all('img'):
+        if (len(stakes) == 0):
+            _save_img(item['src'])
+            continue
         for name in stakes:
             if name.capitalize() in item['src']:
                 _save_img(item['src'])
@@ -26,6 +29,8 @@ def is_blank(line: str) -> bool:
     return len(line) == 0
 
 def _save_img(url: str):
+    if (len(url) < 70):
+        return
     data = requests.get(url).content
     img = open(f'img/{url[66:]}', 'wb')
     img.write(data)
